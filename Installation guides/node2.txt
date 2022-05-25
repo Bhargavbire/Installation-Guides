@@ -1,0 +1,20 @@
+    1 apt-get update
+    2  clear
+    3  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    4  sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+  stable"
+    5  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    6  cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+    7  sudo apt-get update
+    8  apt install docker.io -y
+    9  apt install kubelet -y
+   10  apt install kubeadm -y
+   11  apt install kubectl -y
+   12  sudo apt-mark hold docker-ce kubelet kubeadm kubectl
+   13  echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
+   14  sudo sysctl -p
+   15  history

@@ -1,0 +1,7 @@
+1 sudo yum update
+2 sudo wget https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+3 sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+4 sudo yum install -y apache-maven
+5 sudo yum install java-1.8.0-devel
+6 sudo /usr/sbin/alternatives --config javac
+7 mvn -version
